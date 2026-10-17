@@ -1,0 +1,5 @@
+.env
+.env.*
+*.p8
+*.pem
+.DS_Store
