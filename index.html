@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Apple Music Organizer</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">APPLE MUSIC TOOL</p>
+      <h1>プレイリスト重複チェック</h1>
+      <p class="lead">Apple Musicのプレイリストを読み取り、重複候補を探します。曲の削除や変更は行いません。</p>
+    </header>
+
+    <section class="panel">
+      <h2>1. 接続設定</h2>
+      <p class="muted">Apple Music APIの開発者トークンが必要です。トークンはこの画面のメモリ内でのみ使い、保存しません。</p>
+      <label for="developer-token">Apple Music Developer Token</label>
+      <textarea id="developer-token" rows="3" autocomplete="off" spellcheck="false" placeholder="開発者トークンをここに貼り付け"></textarea>
+      <button id="connect">Apple Musicに接続</button>
+      <p id="connection-status" class="status" role="status">未接続</p>
+    </section>
+
+    <section class="panel">
+      <h2>2. プレイリストを取得</h2>
+      <div class="controls">
+        <button id="load-playlists" class="secondary" disabled>ライブラリを読み込む</button>
+        <select id="playlist-select" aria-label="プレイリスト" disabled>
+          <option value="">プレイリストを選択</option>
+        </select>
+        <button id="scan" disabled>重複をチェック</button>
+      </div>
+      <p class="muted">対象のプレイリストを選んでください。曲一覧はブラウザ内で処理します。</p>
+      <p id="scan-status" class="status" role="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>3. 結果</h2>
+      <div id="summary" class="summary">まだチェックしていません。</div>
+      <div id="results" aria-live="polite"></div>
+    </section>
+
+    <footer>
+      <p>安全のため、Apple IDのパスワードや認証コードは入力しないでください。接続を解除するときはページを閉じてください。</p>
+    </footer>
+  </main>
+</body>
+</html>
